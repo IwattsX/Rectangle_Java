@@ -77,7 +77,24 @@ public class InternalNode extends Node {
         
     }
     @Override
-    void update(int x, int y, int l, int w){
+    void update(int x, int y, int l, int w) throws Exception{
+        Rectangle checkRect = new Rectangle(x, y, 10, 10);
+        if(topLeft != null && topLeft.rect.contains(checkRect)){
+            topLeft.update(x,y, l, w);
+        }
+        else if(topRight != null && topRight.rect.contains(checkRect)){
+            topRight.update(x,y, l, w);
+        }
+        else if(bottomLeft != null && bottomLeft.rect.contains(checkRect)){
+            bottomLeft.update(x,y, l, w);
+        }
+        else if(bottomRight != null && bottomRight.rect.contains(checkRect)){
+            bottomRight.update(x,y, l, w);
+        }
+        else{
+            throw new Exception("Nothing to update at " + x + "," + y + ".");
+        }
+
         
     } 
     @Override

@@ -18,8 +18,15 @@ public class LeafNode extends Node {
 
     @Override
     void insert(Rectangle r) throws Exception{
+        if(this.rect.length == 0 || this.rect.width == 0){
+            throw new Exception("You can not insert at this position");
+        }
         if(rectangles.size() == 5){
             // Make this node an internal one insert as a leafnode rectangle
+            
+            
+
+
             throw new Exception("Leafnode filled");
         }
         for(Rectangle rectangle : rectangles){
@@ -45,12 +52,24 @@ public class LeafNode extends Node {
         if(flag){
             throw new Exception("Nothing to delete at " + x + ", " + y + ".");
         }
-
-
-        
     }
     @Override
-    void update(int x, int y, int l, int w){
+    void update(int x, int y, int l, int w) throws Exception{
+
+        boolean flag = true;
+        for(int i = 0; i<rectangles.size(); i++){
+            Rectangle rectangle = rectangles.get(i);
+            if(rectangle.point.x == x && rectangle.point.y == y){
+                rectangle.length = l;
+                rectangle.width = w;
+                flag = false;
+                break;
+            }
+        }
+
+        if (flag){
+            throw new Exception("Nothing to update at " + x + ", " + y + ".");
+        }
         
     } 
     @Override
