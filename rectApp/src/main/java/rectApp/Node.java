@@ -5,8 +5,8 @@ package rectApp;
 abstract class Node {
     Rectangle rect; //every Node has a rectangle it is within
     abstract void insert(Rectangle r) throws Exception;
-    abstract void delete();
-    abstract void update(); 
+    abstract void delete(Rectangle rectangle);
+    abstract void update(Rectangle rectangle); 
     abstract void dump(); 
-    abstract void find();
+    abstract Rectangle find(Rectangle rectangle);
 }

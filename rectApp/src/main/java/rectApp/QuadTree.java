@@ -1,37 +1,58 @@
 package rectApp;
 
+import java.util.ArrayList;
 
-// Rectangle
 public class QuadTree {
+    private Node root;
 
-
-    Node node;
-
-    QuadTree(){
-        this.node = new LeafNode(-50, -50, 100, 100);
+    public QuadTree() {
+        this.root = new LeafNode(-50, -50, 100, 100); // Example dimensions; adjust as needed
     }
 
-    QuadTree(int x, int y, int l, int w){
-        this.node = new LeafNode(x, y, l, w);
+    public void insert(Rectangle rectangle) {
+        try {
+            root.insert(rectangle); // Attempt to insert into the root
+        } catch (Exception e) {
+            // If inserting into a LeafNode fails due to capacity
+            if (root instanceof LeafNode) {
+                ArrayList<Rectangle> list = ((LeafNode) root).rectangles;
+
+                // Create a new InternalNode at the root
+                InternalNode newRoot = new InternalNode(root.rect.point.x, root.rect.point.y, root.rect.length, root.rect.width);
+
+                // Insert existing rectangles into the new InternalNode
+                for (Rectangle r : list) {
+                    newRoot.insert(r);
+                }
+
+                // Now insert the new rectangle
+                try {
+                    newRoot.insert(rectangle);
+                } catch (Exception ex) {
+                    System.out.println("Failed to insert rectangle after upgrading to InternalNode: " + ex.getMessage());
+                }
+
+                // Set the new root
+                root = newRoot;
+            } else {
+                System.out.println("Failed to insert rectangle: " + e.getMessage());
+            }
+        }
     }
 
-    void insert(Rectangle rectangle) throws Exception{
-        node.insert(rectangle);
+    public Rectangle find(Rectangle rectangle) {
+        return root.find(rectangle);
     }
 
-    void delete(){
-        node.delete();
+    public void delete(Rectangle rectangle) {
+        root.delete(rectangle);
     }
 
-    void update(){
-        node.update();
-    } 
+    public void update(Rectangle rectangle) {
+        root.update(rectangle);
+    }
 
-    void dump(){
-        node.dump();
-    } 
-
-    void find(){
-        node.find();
+    public void dump() {
+        root.dump();
     }
 }

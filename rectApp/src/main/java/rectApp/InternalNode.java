@@ -26,15 +26,16 @@ public class InternalNode extends Node {
     }
     
     @Override
-    void insert(Rectangle r) throws Exception{
+    void insert(Rectangle r){
+
             
     }
     @Override
-    void delete(){
+    void delete(Rectangle rectangle){
         
     }
     @Override
-    void update(){
+    void update(Rectangle rectangle){
         
     } 
     @Override
@@ -43,7 +44,7 @@ public class InternalNode extends Node {
         
     } 
     @Override
-    void find(){
-        
+    Rectangle find(Rectangle rectangle){
+        return new Rectangle(0, 0, 0, 0);
     }
 }

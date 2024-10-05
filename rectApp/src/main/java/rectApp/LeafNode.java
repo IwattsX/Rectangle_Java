@@ -20,19 +20,18 @@ public class LeafNode extends Node {
     void insert(Rectangle r) throws Exception{
         if(rectangles.size() == 5){
             // Make this node an internal one insert as a leafnode rectangle
-            
-            return;
+            throw new Exception("Leafnode filled");
         }
 
         rectangles.add(r);
         
     }
     @Override
-    void delete(){
+    void delete(Rectangle rectangle){
         
     }
     @Override
-    void update(){
+    void update(Rectangle rectangle){
         
     } 
     @Override
@@ -45,7 +44,8 @@ public class LeafNode extends Node {
         
     } 
     @Override
-    void find(){
+    Rectangle find(Rectangle rectangle){
+        return new Rectangle(0, 0, 0, 0);
         
     }
 }
