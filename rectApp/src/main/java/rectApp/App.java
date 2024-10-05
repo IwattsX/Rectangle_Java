@@ -11,6 +11,9 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         ArrayList<String> commands = new ArrayList<String>();
+        QuadTree tree = new QuadTree();
+
+
         try{
             for(int i = 0; i<args.length; i++){
                 Scanner in = new Scanner(new File(args[i]));
@@ -35,6 +38,16 @@ public class App {
                     String[] insertInput = parse_InsertInput(cmd);
 
                     System.out.println(Arrays.toString(insertInput));
+                    int x, y, l, w;
+                    x = Integer.valueOf(insertInput[1]);
+                    y = Integer.valueOf(insertInput[2]);
+
+                    l = Integer.valueOf(insertInput[3]);
+                    w = Integer.valueOf(insertInput[4]);
+
+
+                    Rectangle rectangle = new Rectangle(x, y, l, w);
+                    tree.insert(rectangle);
                     // Add an insert handler here
                 }
                 else if(cmd.startsWith("find")){
@@ -62,6 +75,9 @@ public class App {
                 } 
                 else if(cmd.startsWith("dump;")){
                     System.out.println("DUMP HERE");
+
+                    tree.dump();
+
 
 
                     // Just use DFS for this
