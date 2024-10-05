@@ -9,47 +9,21 @@ public class QuadTree {
         this.root = new LeafNode(-50, -50, 100, 100); // Example dimensions; adjust as needed
     }
 
-    public void insert(Rectangle rectangle){
-        try {
-            root.insert(rectangle); // Attempt to insert into the root
-        } catch (Exception e) {
-            // If inserting into a LeafNode fails due to capacity
-            if (root instanceof LeafNode) {
-                ArrayList<Rectangle> list = ((LeafNode) root).rectangles;
+    public void insert(Rectangle rectangle) throws Exception{
+        root.insert(rectangle);
+    }
+    
 
-                // Create a new InternalNode at the root
-                InternalNode newRoot = new InternalNode(root.rect.point.x, root.rect.point.y, root.rect.length, root.rect.width);
-
-                // Insert existing rectangles into the new InternalNode
-                try {
-                    for (Rectangle r : list) {
-                        newRoot.insert(r);
-                    }
-
-                    // Now insert the new rectangle
-                    newRoot.insert(rectangle);
-                } catch (Exception ex) {
-                    System.out.println("Failed to insert rectangle after upgrading to InternalNode: " + ex.getMessage());
-                }
-
-                // Set the new root
-                root = newRoot;
-            } else {
-                System.out.println("Failed to insert rectangle: " + e.getMessage());
-            }
-        }
+    public Rectangle find(int x, int y) throws Exception{
+        return root.find(x, y);
     }
 
-    public Rectangle find(Rectangle rectangle) {
-        return root.find(rectangle);
+    public void delete(int x, int y) throws Exception {
+        root.delete(x,y);
     }
 
-    public void delete(Rectangle rectangle) {
-        root.delete(rectangle);
-    }
-
-    public void update(Rectangle rectangle) {
-        root.update(rectangle);
+    public void update(int x, int y, int l, int w) throws Exception{
+        root.update(x,y,l,w);
     }
 
     public void dump() {

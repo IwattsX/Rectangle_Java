@@ -27,7 +27,7 @@ public class App {
         catch(FileNotFoundException e){
             System.out.println(e);
         }        
-        System.out.printf("The commands being ran are %s\n",commands);
+        System.out.printf("The commands being ran are \n%s\n",commands);
 
 
         for(int i =0; i<commands.size(); i++){
@@ -37,7 +37,6 @@ public class App {
                 if(cmd.startsWith("insert")){
                     String[] insertInput = parse_InsertInput(cmd);
 
-                    System.out.println(Arrays.toString(insertInput));
                     int x, y, l, w;
                     x = Integer.valueOf(insertInput[1]);
                     y = Integer.valueOf(insertInput[2]);
@@ -54,39 +53,63 @@ public class App {
                     // TODO: Implement the find parser
 
                     String[] findInput = parse_FindInput(cmd);
+                    int x, y;
+
+                    x = Integer.valueOf(findInput[1]);
+                    y = Integer.valueOf(findInput[2]);
 
                     System.out.println(Arrays.toString(findInput));
                     //Add a handler
+
+                    Rectangle res = tree.find(x,y);
+
+                    System.out.printf("Rectangle at %d, %d: %dx%d:\n", res.point.x, res.point.y, res.length, res.width);
 
                 }
                 else if(cmd.startsWith("delete")){
                     // TODO: Implement the delete parser
                     String[] deleteInput = parse_DeleteInput(cmd);
 
+                    int x, y;
+
+                    x = Integer.valueOf(deleteInput[1]);
+                    y = Integer.valueOf(deleteInput[2]);
+
                     System.out.println(Arrays.toString(deleteInput));
                     //Add a handler
+
+                    tree.delete(x,y);
                 }   
                 else if(cmd.startsWith("update")){
                     // TODO: Implement the update parser
                     String[] updateInput = parse_UpdateInput(cmd);
+                    
+                    int x, y, l, w;
+
+                    x = Integer.valueOf(updateInput[1]);
+                    y = Integer.valueOf(updateInput[2]);
+                    l = Integer.valueOf(updateInput[3]);
+                    w = Integer.valueOf(updateInput[4]);
 
                     System.out.println(Arrays.toString(updateInput));
                     //Add a handler
-                } 
-                else if(cmd.startsWith("dump;")){
-                    tree.dump();
 
-
-
-                    // Just use DFS for this
+                    tree.update(x,y,l,w);
 
                 }
+
+                else if(cmd.startsWith("dump;")){
+                    tree.dump();
+                }
+
                 else{
                     throw new Exception("Invalid command");
                 }
+
             }
             catch(Exception e){
-                System.out.println(e);
+                System.out.println(e.getMessage());
+                return;
             }
             
         }

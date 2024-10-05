@@ -22,16 +22,35 @@ public class LeafNode extends Node {
             // Make this node an internal one insert as a leafnode rectangle
             throw new Exception("Leafnode filled");
         }
-
+        for(Rectangle rectangle : rectangles){
+            if(r.point.x == rectangle.point.x && r.point.y == rectangle.point.y){
+                throw new Exception("You can not double insert at a position.");
+            }
+        }
         rectangles.add(r);
         
     }
     @Override
-    void delete(Rectangle rectangle){
+    void delete(int x, int y) throws Exception{
+        boolean flag = true;
+        for(int i = 0; i<rectangles.size(); i++){
+            Rectangle rectangle = rectangles.get(i);
+            if(rectangle.point.x == x && rectangle.point.y == y){
+                rectangles.remove(i);
+                flag = false;
+                break;
+            }
+        }
+
+        if(flag){
+            throw new Exception("Nothing to delete at " + x + ", " + y + ".");
+        }
+
+
         
     }
     @Override
-    void update(Rectangle rectangle){
+    void update(int x, int y, int l, int w){
         
     } 
     @Override
@@ -44,8 +63,14 @@ public class LeafNode extends Node {
         
     } 
     @Override
-    Rectangle find(Rectangle rectangle){
-        return new Rectangle(0, 0, 0, 0);
+    Rectangle find(int x, int y) throws Exception{
+        for(Rectangle rectangle : rectangles){
+            if(rectangle.point.x == x && rectangle.point.y == y){
+                return rectangle;
+            }
+        }
+
+        throw new Exception("Nothing is at " + x + ", " + y + ".");
         
     }
 }
