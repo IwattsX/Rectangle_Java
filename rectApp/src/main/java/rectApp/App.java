@@ -29,13 +29,47 @@ public class App {
 
         for(int i =0; i<commands.size(); i++){
             try{
-                if(commands.get(i).startsWith("insert")){
-                    String[] insertInput = parse_InsertInput(commands.get(i));
-                    System.out.println("Insert command being instantiated");
+                String cmd = commands.get(i).toLowerCase();
+
+                if(cmd.startsWith("insert")){
+                    String[] insertInput = parse_InsertInput(cmd);
 
                     System.out.println(Arrays.toString(insertInput));
-                    
-                }    
+                    // Add an insert handler here
+                }
+                else if(cmd.startsWith("find")){
+                    // TODO: Implement the find parser
+
+                    String[] findInput = parse_FindInput(cmd);
+
+                    System.out.println(Arrays.toString(findInput));
+                    //Add a handler
+
+                }
+                else if(cmd.startsWith("delete")){
+                    // TODO: Implement the delete parser
+                    String[] deleteInput = parse_DeleteInput(cmd);
+
+                    System.out.println(Arrays.toString(deleteInput));
+                    //Add a handler
+                }   
+                else if(cmd.startsWith("update")){
+                    // TODO: Implement the update parser
+                    String[] updateInput = parse_UpdateInput(cmd);
+
+                    System.out.println(Arrays.toString(updateInput));
+                    //Add a handler
+                } 
+                else if(cmd.startsWith("dump;")){
+                    System.out.println("DUMP HERE");
+
+
+                    // Just use DFS for this
+
+                }
+                else{
+                    throw new Exception("Invalid command");
+                }
             }
             catch(Exception e){
                 System.out.println(e);
@@ -68,15 +102,119 @@ public class App {
             }
             counter++;
         }
-        in.close();
+
         
-        if(counter < 5){
+        if(counter < 5 || in.hasNext()){
+            in.close();
             throw new Exception("Cannot parse the input " + cmd);
         }
+        in.close();
 
         return res;
     }
-    
+   
+    /** 
+     * parses an input that contains "find" in it
+     * Format it parses is "find X Y"
+     * @param cmd
+     * @return String[]
+     * @throws Exception 
+     */
+    private static String[] parse_FindInput(String cmd) throws Exception{
+        Scanner in = new Scanner(cmd);
+        String[] res = new String[3];
+
+        int counter = 0;
+        while(in.hasNext() && counter < res.length){
+            String tmp = in.next();
+            if(tmp.contains(";")){
+                res[counter] = tmp.substring(0, tmp.length() - 1);
+            }
+            else{
+                res[counter] = tmp;
+            }
+            counter++;
+        }
+
+        
+        if(counter < 3 || in.hasNext()){
+            in.close();
+            throw new Exception("Cannot parse the input " + cmd);
+            
+        }
+        in.close();
+
+        return res;
+    }
+
+
+        /** 
+     * parses an input that contains "delete" in it
+     * Format it parses is "delete X Y"
+     * @param cmd
+     * @return String[]
+     * @throws Exception 
+     */
+    private static String[] parse_DeleteInput(String cmd) throws Exception{
+        Scanner in = new Scanner(cmd);
+        String[] res = new String[3];
+
+        int counter = 0;
+        while(in.hasNext() && counter < res.length){
+            String tmp = in.next();
+            if(tmp.contains(";")){
+                res[counter] = tmp.substring(0, tmp.length() - 1);
+            }
+            else{
+                res[counter] = tmp;
+            }
+            counter++;
+        }
+
+        
+        if(counter < 3 || in.hasNext()){
+            in.close();
+            throw new Exception("Cannot parse the input " + cmd);
+            
+        }
+        in.close();
+
+        return res;
+    }
+
+        /** 
+     * parses an input that contains "update" in it
+     * Format it parses is "update X Y L W"
+     * @param cmd
+     * @return String[]
+     * @throws Exception 
+     */
+    private static String[] parse_UpdateInput(String cmd) throws Exception{
+        Scanner in = new Scanner(cmd);
+        String[] res = new String[5];
+
+        int counter = 0;
+        while(in.hasNext() && counter < res.length){
+            String tmp = in.next();
+            if(tmp.contains(";")){
+                res[counter] = tmp.substring(0, tmp.length() - 1);
+            }
+            else{
+                res[counter] = tmp;
+            }
+            counter++;
+        }
+
+        
+        if(counter < 5 || in.hasNext()){
+            in.close();
+            throw new Exception("Cannot parse the input " + cmd);
+            
+        }
+        in.close();
+
+        return res;
+    }
 }
 
 /**
