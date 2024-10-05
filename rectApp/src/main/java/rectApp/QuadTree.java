@@ -9,7 +9,7 @@ public class QuadTree {
         this.root = new LeafNode(-50, -50, 100, 100); // Example dimensions; adjust as needed
     }
 
-    public void insert(Rectangle rectangle) {
+    public void insert(Rectangle rectangle){
         try {
             root.insert(rectangle); // Attempt to insert into the root
         } catch (Exception e) {
@@ -21,12 +21,12 @@ public class QuadTree {
                 InternalNode newRoot = new InternalNode(root.rect.point.x, root.rect.point.y, root.rect.length, root.rect.width);
 
                 // Insert existing rectangles into the new InternalNode
-                for (Rectangle r : list) {
-                    newRoot.insert(r);
-                }
-
-                // Now insert the new rectangle
                 try {
+                    for (Rectangle r : list) {
+                        newRoot.insert(r);
+                    }
+
+                    // Now insert the new rectangle
                     newRoot.insert(rectangle);
                 } catch (Exception ex) {
                     System.out.println("Failed to insert rectangle after upgrading to InternalNode: " + ex.getMessage());

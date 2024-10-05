@@ -74,8 +74,6 @@ public class App {
                     //Add a handler
                 } 
                 else if(cmd.startsWith("dump;")){
-                    System.out.println("DUMP HERE");
-
                     tree.dump();
 
 

@@ -10,6 +10,17 @@ public class Rectangle {
         this.length = l;
         this.width = w;
     }
+
+    public boolean contains(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Rectangle)) return false;
+        Rectangle other = (Rectangle) obj;
+
+
+    // Check if the bottom-left corner of 'other' is within the bounds of this rectangle
+    return (other.point.x >= this.point.x && other.point.x <= this.point.x + this.length) 
+        && (other.point.y >= this.point.y && other.point.y <= this.point.y + this.width);
+    }
 }
 
 

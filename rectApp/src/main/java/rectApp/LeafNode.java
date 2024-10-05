@@ -39,7 +39,7 @@ public class LeafNode extends Node {
         System.out.printf("Leaf Node - Rectangle at %d, %d: %dx%d:\n", this.rect.point.x, this.rect.point.y, this.rect.length, this.rect.width);
         for(int i = 0; i<rectangles.size(); i++){
             Rectangle tmpRect = rectangles.get(i);
-            System.out.printf("\tRectangle at %d, %d: %dx%d:\n", tmpRect.point.x, tmpRect.point.y, tmpRect.length, tmpRect.width);
+            System.out.printf("\t\tRectangle at %d, %d: %dx%d:\n", tmpRect.point.x, tmpRect.point.y, tmpRect.length, tmpRect.width);
         }
         
     } 
