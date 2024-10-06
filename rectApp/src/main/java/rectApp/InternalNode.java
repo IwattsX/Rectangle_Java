@@ -99,7 +99,7 @@ public class InternalNode extends Node {
     } 
     @Override
     void dump(int tabs){
-        System.out.printf("\t".repeat(tabs) + "Internal Node - Rectangle at %d, %d: %dx%d\n", this.rect.point.x, this.rect.point.y, this.rect.length, this.rect.width);
+        System.out.printf("\t".repeat(tabs) + "Internal Node - %s\n", this.rect.toString());
         tabs++;
         if(topLeft != null){
             topLeft.dump(tabs);

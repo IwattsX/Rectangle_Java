@@ -21,6 +21,11 @@ public class Rectangle {
     return (other.point.x >= this.point.x && other.point.x <= this.point.x + this.length) 
         && (other.point.y >= this.point.y && other.point.y <= this.point.y + this.width);
     }
+
+    public String toString(){
+        //Rectangle at 25, 0: 25x25:
+        return String.format("Rectangle at %d, %d: %dx%d:", this.point.x, this.point.y, this.length, this.width);
+    }
 }
 
 
