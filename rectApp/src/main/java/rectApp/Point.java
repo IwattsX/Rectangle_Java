@@ -1,5 +1,6 @@
 package rectApp;
 
+/**Contains the field for points x and y */
 public class Point {
     public int x;
     public int y;

@@ -2,6 +2,7 @@ package rectApp;
 
 import java.util.ArrayList;
 
+/** A leafNode that inherits from Node containing an ArrayList of Rectangles and its reference to a parent (if any) */
 public class LeafNode extends Node {
     ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
 

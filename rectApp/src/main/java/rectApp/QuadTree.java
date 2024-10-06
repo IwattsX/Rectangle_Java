@@ -1,8 +1,12 @@
 package rectApp;
 
+/** A tree containing a root node that either points to other nodes (an internal node) or is a LeafNode that contains data */
 public class QuadTree {
     private Node root;
     int initial_tabs = 0;
+
+
+    /**Default constructor rectangle bottom left goes to (-50, -50), length = 100, width = 100 */
     public QuadTree() {
         this.root = new LeafNode(-50, -50, 100, 100); // Example dimensions; adjust as needed
     }

@@ -1,5 +1,6 @@
 package rectApp;
 
+/** An internal Node which has the child Nodes topLeft, topRight, bottomLeft, bottomRight */
 public class InternalNode extends Node {
 
     Node topLeft;
@@ -7,7 +8,7 @@ public class InternalNode extends Node {
     Node bottomLeft;
     Node bottomRight;
     
-
+    /** Default constructor constructing Internal Node rectangle at (-50, 50), length = 100, width = 100 */
     InternalNode(){
         //default values for leaf node
         this.rect = new Rectangle(-50, -50, 100, 100);
@@ -17,6 +18,13 @@ public class InternalNode extends Node {
         this.bottomRight = null;
     }
 
+    /**
+     * Parameterized constructor that constructs the Interal Node rectangle at (x, y), length = l, width = w
+     * @param x : location at X
+     * @param y : location at Y
+     * @param l : length
+     * @param w : width
+     */
     InternalNode(int x, int y, int l, int w){
         this.rect = new Rectangle(x, y, l, w);
         this.topLeft = null;

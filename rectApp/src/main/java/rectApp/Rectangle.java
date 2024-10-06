@@ -1,6 +1,6 @@
 package rectApp;
 
-
+/** A class containing Rectangle Fields Points(x, y) and length and width */
 public class Rectangle {
     public Point point;
     public int length;

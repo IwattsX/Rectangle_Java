@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// give this an absolute filepath
-
+/** Contains the main method driver code */
 public class App {
     
     /** 
+     * Driver code
      * @param args : String[] arguments ran in command line
      */
     public static void main(String[] args) {
@@ -246,10 +246,3 @@ public class App {
         return res;
     }
 }
-
-/**
- * Insert X Y L W
-Insert a rectangle into the quadtree as the specified X and Y coordinates with the specified length and
-width. If there is already a rectangle at the specified position, your program should terminate, and you
-should print a message saying, “You can not double insert at a position.”
- */
