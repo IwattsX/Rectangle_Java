@@ -98,23 +98,20 @@ public class InternalNode extends Node {
         
     } 
     @Override
-    void dump(){
-        System.out.printf("Internal Node - Rectangle at %d, %d: %dx%d\n", this.rect.point.x, this.rect.point.y, this.rect.length, this.rect.width);
+    void dump(int tabs){
+        System.out.printf("\t".repeat(tabs) + "Internal Node - Rectangle at %d, %d: %dx%d\n", this.rect.point.x, this.rect.point.y, this.rect.length, this.rect.width);
+        tabs++;
         if(topLeft != null){
-            System.out.print("\t");
-            topLeft.dump();
+            topLeft.dump(tabs);
         }
         if(topRight != null){
-            System.out.print("\t");
-            topRight.dump();
+            topRight.dump(tabs);
         }
         if(bottomLeft != null){
-            System.out.print("\t");
-            bottomLeft.dump();
+            bottomLeft.dump(tabs);
         }
         if(bottomRight != null){
-            System.out.print("\t");
-            bottomRight.dump();
+            bottomRight.dump(tabs);
         }
         
     } 

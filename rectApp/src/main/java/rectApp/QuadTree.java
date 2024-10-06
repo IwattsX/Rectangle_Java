@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class QuadTree {
     private Node root;
-
+    int initial_tabs = 0;
     public QuadTree() {
         this.root = new LeafNode(-50, -50, 100, 100); // Example dimensions; adjust as needed
     }
@@ -52,7 +52,7 @@ public class QuadTree {
         root.update(x,y,l,w);
     }
 
-    public void dump() {
-        root.dump();
+    public void dump(int tabs) {
+        root.dump(tabs);
     }
 }

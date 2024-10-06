@@ -99,7 +99,7 @@ public class App {
                 }
 
                 else if(cmd.startsWith("dump;")){
-                    tree.dump();
+                    tree.dump(0);
                 }
 
                 else{

@@ -15,7 +15,7 @@ abstract class Node {
     abstract void update(int x, int y, int l, int w) throws Exception;
     
     // just prints
-    abstract void dump(); 
+    abstract void dump(int tabs); 
 
     // Find X Y
     abstract Rectangle find(int x, int y) throws Exception;

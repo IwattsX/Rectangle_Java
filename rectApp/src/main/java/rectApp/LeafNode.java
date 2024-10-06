@@ -93,15 +93,14 @@ public class LeafNode extends Node {
     }
 
     @Override
-    void dump() {
-        System.out.printf("Leaf Node - Rectangle at %d, %d: %dx%d:\n", this.rect.point.x, this.rect.point.y,
+    void dump(int tabs) {
+        System.out.printf("\t".repeat(tabs) + "Leaf Node - Rectangle at %d, %d: %dx%d:\n", this.rect.point.x, this.rect.point.y,
                 this.rect.length, this.rect.width);
         for (int i = 0; i < rectangles.size(); i++) {
             Rectangle tmpRect = rectangles.get(i);
-            System.out.printf("\t\tRectangle at %d, %d: %dx%d:\n", tmpRect.point.x, tmpRect.point.y, tmpRect.length,
+            System.out.printf("\t".repeat( tabs + 1) + "Rectangle at %d, %d: %dx%d:\n", tmpRect.point.x, tmpRect.point.y, tmpRect.length,
                     tmpRect.width);
         }
-
     }
 
     @Override
