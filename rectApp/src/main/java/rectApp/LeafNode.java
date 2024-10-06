@@ -7,6 +7,7 @@ public class LeafNode extends Node {
 
     InternalNode parent;
 
+    // default constructor
     LeafNode() {
         // default values for leaf node
         this.rect = new Rectangle(-50, -50, 100, 100);
@@ -14,18 +15,42 @@ public class LeafNode extends Node {
 
     }
 
+    /**
+     * A parameterized constructor w/o a parent node
+     * @param x : location of bottom left point at X
+     * @param y : location of bottom left point at Y
+     * @param l : length of the rectangle
+     * @param w : width of the rectangle
+     */
     LeafNode(int x, int y, int l, int w) {
         this.rect = new Rectangle(x, y, l, w);
     }
 
+    /**
+     * A parameterized constructor with a parent node
+     * @param x : location of bottom left point at X
+     * @param y : location of bottom left point at Y
+     * @param l : length of the rectangle
+     * @param w : width of the rectangle
+     * @param n : the parent of this LeafNode
+     */
     LeafNode(int x, int y, int l, int w, InternalNode n) {
         this.rect = new Rectangle(x, y, l, w);
         parent = n;
     }
 
+
+    
+
+    
+    /** 
+     * Insert a rectangle into an ArrayList of rectangles in LeafNode or puts them for insertion inside of an InternalNode that will eventually have LeafNodes to insert into
+     * @param r : the rectangle being inserted into this LeafNode.rectangles ArrayList
+     * @throws Exception
+     */
     @Override
     void insert(Rectangle r) throws Exception{
-        if(this.rect.length == 0 || !this.rect.contains(r)
+        if(this.rect.length == 0 || this.rect.width == 0 || !this.rect.contains(r)
         ){
             throw new Exception("You can not insert at this position");
         }
@@ -55,6 +80,13 @@ public class LeafNode extends Node {
         
     }
 
+    
+    /** 
+     * Deletes a rectangle from the ArrayList at (x,y)
+     * @param x : location at x
+     * @param y : location at y
+     * @throws Exception : nothing to be deleted at (x,y)
+     */
     @Override
     void delete(int x, int y) throws Exception {
         boolean flag = true;
@@ -72,6 +104,15 @@ public class LeafNode extends Node {
         }
     }
 
+    
+    /** 
+     * Updates one of the rectanges in an ArrayList to have length l and width w
+     * @param x : location of rectangle at x
+     * @param y : location of rectangle at y
+     * @param l : length to be updated to
+     * @param w : width to be updated to
+     * @throws Exception : if there is no rectangles at (x,y)
+     */
     @Override
     void update(int x, int y, int l, int w) throws Exception {
 
@@ -92,6 +133,11 @@ public class LeafNode extends Node {
 
     }
 
+    
+    /** 
+     * prints to the stout all the rectangles within the ArrayList
+     * @param tabs : The amount of tabs that need to be intented
+     */
     @Override
     void dump(int tabs) {
         System.out.printf("\t".repeat(tabs) + "Leaf Node - %s\n", this.rect.toString());
@@ -101,6 +147,12 @@ public class LeafNode extends Node {
         }
     }
 
+    /**
+     * Finds a rectangle at position (x, y)
+     * @param x : location of rectangle at x
+     * @param y : location of rectangle at y
+     * @throws Exception : if no rectangle is there at (x, y)
+     */
     @Override
     Rectangle find(int x, int y) throws Exception {
         for (Rectangle rectangle : rectangles) {

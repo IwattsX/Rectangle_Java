@@ -7,10 +7,18 @@ public class QuadTree {
         this.root = new LeafNode(-50, -50, 100, 100); // Example dimensions; adjust as needed
     }
 
+    /**
+     * A public function that gets the root of the QuadTree
+     */
     public Node getRoot(){
         return this.root;
     }
 
+    /**
+     * Insert a rectangle inside of the QuadTree
+     * @param rectangle : Rectangle to be inserted into the QuadTree
+     * @throws Exception : If it can't insert there or if there is already something inserted there
+     */
     public void insert(Rectangle rectangle) throws Exception {
         // Check if the root is a LeafNode and needs to be updated
         if (root instanceof LeafNode) {
@@ -41,19 +49,43 @@ public class QuadTree {
     }
     
     
-
+    /**
+     * Finds a rectangle object inside of the QuadTree
+     * @param x : location at X
+     * @param y : location at Y
+     * @return Rectangle : the rectangle object at (x, y)
+     * @throws Exception : if there is no rectangle at (x, y)
+     */
     public Rectangle find(int x, int y) throws Exception{
         return root.find(x, y);
     }
 
+    /**
+     * Deletes a rectangle object inside of the QuadTree
+     * @param x : location at X
+     * @param y : location at Y
+     * @throws Exception : nothing to be deleted at (x, y)
+     */
     public void delete(int x, int y) throws Exception {
         root.delete(x,y);
     }
 
+    /**
+     * Updates a rectangle at (x, y)
+     * @param x : location at X
+     * @param y : location at Y 
+     * @param l : length to be updated to
+     * @param w : width to be updated to
+     * @throws Exception
+     */
     public void update(int x, int y, int l, int w) throws Exception{
         root.update(x,y,l,w);
     }
 
+    /**
+     * Prints to the stdout the whole QuadTree in a specific format
+     * @param tabs : the amount of tabs on the left side of each stdout init at 0
+     */
     public void dump(int tabs) {
         root.dump(tabs);
     }

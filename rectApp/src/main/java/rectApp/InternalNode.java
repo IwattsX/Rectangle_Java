@@ -25,6 +25,11 @@ public class InternalNode extends Node {
         this.bottomRight = null;
     }
     
+    
+    /** 
+     * @param r : Rectangle
+     * @throws Exception : if there are any problems with inserting
+     */
     @Override
     void insert(Rectangle r) throws Exception {
         // Ensure children are initialized
@@ -55,6 +60,13 @@ public class InternalNode extends Node {
         }
     }
     
+    
+    /** 
+     * Deletes a Rectangle from the data
+     * @param x : location at the x coordinate
+     * @param y : location at the y coordinate
+     * @throws Exception : if there is nothing to delete at (x,y)
+     */
     @Override
     void delete(int x, int y) throws Exception{
         Rectangle checkRect = new Rectangle(x, y, 10, 10);
@@ -76,6 +88,17 @@ public class InternalNode extends Node {
         }
         
     }
+
+
+    
+    
+    /** 
+     * @param x : location of rectange at x
+     * @param y : location of rectange at y
+     * @param l : length of the rectangle being updated to
+     * @param w : width of the rectangle being updated to
+     * @throws Exception
+     */
     @Override
     void update(int x, int y, int l, int w) throws Exception{
         Rectangle checkRect = new Rectangle(x, y, 10, 10);
@@ -97,6 +120,15 @@ public class InternalNode extends Node {
 
         
     } 
+
+
+
+    
+    
+    /** 
+     * Prints out the Internal Node to the stdout
+     * @param tabs : the amount of tabs to be placed for all these arguments(done recursively updated with DFS)
+     */
     @Override
     void dump(int tabs){
         System.out.printf("\t".repeat(tabs) + "Internal Node - %s\n", this.rect.toString());
@@ -114,7 +146,16 @@ public class InternalNode extends Node {
             bottomRight.dump(tabs);
         }
         
-    } 
+    }
+    
+    
+    
+    /** 
+     * @param x : location to check for x
+     * @param y : location to check for y
+     * @return Rectangle : the rectangle object that is found at (x, y)
+     * @throws Exception
+     */
     @Override
     Rectangle find(int x, int y) throws Exception{
         Rectangle checkRect = new Rectangle(x, y, 10, 10);
@@ -136,6 +177,12 @@ public class InternalNode extends Node {
         }
     }
 
+
+    
+    /** 
+     * This replaces one of the LeafNodes with Internal nodes
+     * @param n : node to replace one of the children with
+     */
     void replaceChild(InternalNode n){
         if(topLeft.rect.contains(n.rect)){
             topLeft = n;
@@ -152,7 +199,5 @@ public class InternalNode extends Node {
         if(bottomRight.rect.contains(n.rect)){
             bottomRight = n;
         }
-        
-
     }
 }

@@ -3,12 +3,15 @@ package rectApp;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 // give this an absolute filepath
 
 public class App {
+    
+    /** 
+     * @param args : String[] arguments ran in command line
+     */
     public static void main(String[] args) {
         ArrayList<String> commands = new ArrayList<String>();
         QuadTree tree = new QuadTree();
@@ -110,7 +113,7 @@ public class App {
     
     /** 
      * parses an input that contains "insert" in it
-     * Format it parses is "Insert X Y L W"
+     * Format it parses is "Insert X Y L W;"
      * @param cmd
      * @return String[]
      * @throws Exception 
@@ -142,10 +145,10 @@ public class App {
    
     /** 
      * parses an input that contains "find" in it
-     * Format it parses is "find X Y"
+     * Format it parses is "find X Y;"
      * @param cmd
-     * @return String[]
-     * @throws Exception 
+     * @return String[] A string that contains ["find", "x", "y"]
+     * @throws Exception if that command is invalid
      */
     private static String[] parse_FindInput(String cmd) throws Exception{
         Scanner in = new Scanner(cmd);
@@ -177,10 +180,10 @@ public class App {
 
         /** 
      * parses an input that contains "delete" in it
-     * Format it parses is "delete X Y"
+     * Format it parses is "delete X Y;"
      * @param cmd
-     * @return String[]
-     * @throws Exception 
+     * @return String[] : A string[] that contains ["delete", "X", "Y"]
+     * @throws Exception if that command is invalid
      */
     private static String[] parse_DeleteInput(String cmd) throws Exception{
         Scanner in = new Scanner(cmd);
@@ -211,10 +214,10 @@ public class App {
 
         /** 
      * parses an input that contains "update" in it
-     * Format it parses is "update X Y L W"
+     * Format it parses is "update X Y L W;"
      * @param cmd
-     * @return String[]
-     * @throws Exception 
+     * @return String[] : String[] that contains ["update", "X", "Y", "L" , "W"]
+     * @throws Exception if that command is invalid
      */
     private static String[] parse_UpdateInput(String cmd) throws Exception{
         Scanner in = new Scanner(cmd);
