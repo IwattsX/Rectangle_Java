@@ -47,7 +47,7 @@ public class App {
 
                     Rectangle rectangle = new Rectangle(x, y, l, w);
                     tree.insert(rectangle);
-                    // Add an insert handler here
+
                 }
                 else if(cmd.startsWith("find")){
 
@@ -57,12 +57,11 @@ public class App {
                     x = Integer.valueOf(findInput[1]);
                     y = Integer.valueOf(findInput[2]);
 
-                    System.out.println(Arrays.toString(findInput));
-                    //Add a handler
+
 
                     Rectangle res = tree.find(x,y);
 
-                    System.out.printf("Rectangle at %d, %d: %dx%d:\n", res.point.x, res.point.y, res.length, res.width);
+                    System.out.println(res.toString());
 
                 }
                 else if(cmd.startsWith("delete")){
@@ -72,9 +71,6 @@ public class App {
 
                     x = Integer.valueOf(deleteInput[1]);
                     y = Integer.valueOf(deleteInput[2]);
-
-                    System.out.println(Arrays.toString(deleteInput));
-                    //Add a handler
 
                     tree.delete(x,y);
                 }   
@@ -87,9 +83,6 @@ public class App {
                     y = Integer.valueOf(updateInput[2]);
                     l = Integer.valueOf(updateInput[3]);
                     w = Integer.valueOf(updateInput[4]);
-
-                    System.out.println(Arrays.toString(updateInput));
-                    //Add a handler
 
                     tree.update(x,y,l,w);
 
