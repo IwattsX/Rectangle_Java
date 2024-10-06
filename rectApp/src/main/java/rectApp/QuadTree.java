@@ -1,7 +1,5 @@
 package rectApp;
 
-import java.util.ArrayList;
-
 public class QuadTree {
     private Node root;
     int initial_tabs = 0;

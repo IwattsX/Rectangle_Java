@@ -50,7 +50,6 @@ public class App {
                     // Add an insert handler here
                 }
                 else if(cmd.startsWith("find")){
-                    // TODO: Implement the find parser
 
                     String[] findInput = parse_FindInput(cmd);
                     int x, y;
@@ -67,7 +66,6 @@ public class App {
 
                 }
                 else if(cmd.startsWith("delete")){
-                    // TODO: Implement the delete parser
                     String[] deleteInput = parse_DeleteInput(cmd);
 
                     int x, y;
@@ -81,7 +79,6 @@ public class App {
                     tree.delete(x,y);
                 }   
                 else if(cmd.startsWith("update")){
-                    // TODO: Implement the update parser
                     String[] updateInput = parse_UpdateInput(cmd);
                     
                     int x, y, l, w;
