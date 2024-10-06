@@ -27,22 +27,21 @@ public class InternalNode extends Node {
     
     @Override
     void insert(Rectangle r) throws Exception {
-        // split
+        // Ensure children are initialized
         if (topLeft == null) {
-            topLeft = new LeafNode(rect.point.x, rect.point.y + (rect.width / 2), rect.length / 2, rect.width / 2);
+            topLeft = new LeafNode(rect.point.x, rect.point.y + (rect.width / 2), rect.length / 2, rect.width / 2, this);
         }
         if (topRight == null) {
-            topRight = new LeafNode(rect.point.x + (rect.length / 2), rect.point.y + (rect.width / 2), rect.length / 2, rect.width / 2);
+            topRight = new LeafNode(rect.point.x + (rect.length / 2), rect.point.y + (rect.width / 2), rect.length / 2, rect.width / 2, this);
         }
         if (bottomLeft == null) {
-            bottomLeft = new LeafNode(rect.point.x, rect.point.y, rect.length / 2, rect.width / 2);
+            bottomLeft = new LeafNode(rect.point.x, rect.point.y, rect.length / 2, rect.width / 2, this);
         }
         if (bottomRight == null) {
-            bottomRight = new LeafNode(rect.point.x + (rect.length / 2), rect.point.y, rect.length / 2, rect.width / 2);
+            bottomRight = new LeafNode(rect.point.x + (rect.length / 2), rect.point.y, rect.length / 2, rect.width / 2, this);
         }
-
-
-
+    
+        // Insert the rectangle into the appropriate child node
         if (topLeft.rect.contains(r)) {
             topLeft.insert(r);
         } else if (topRight.rect.contains(r)) {
@@ -55,6 +54,7 @@ public class InternalNode extends Node {
             throw new Exception("Rectangle does not fit in any quadrant.");
         }
     }
+    
     @Override
     void delete(int x, int y) throws Exception{
         Rectangle checkRect = new Rectangle(x, y, 10, 10);
@@ -137,5 +137,25 @@ public class InternalNode extends Node {
         else{
             throw new Exception("Nothing is at " + x + "," + y + ".");
         }
+    }
+
+    void replaceChild(InternalNode n){
+        if(topLeft.rect.contains(n.rect)){
+            topLeft = n;
+        }
+
+        if(topRight.rect.contains(n.rect)){
+            topRight = n;
+        }
+
+        if(bottomLeft.rect.contains(n.rect)){
+            bottomLeft = n;
+        }
+
+        if(bottomRight.rect.contains(n.rect)){
+            bottomRight = n;
+        }
+        
+
     }
 }
