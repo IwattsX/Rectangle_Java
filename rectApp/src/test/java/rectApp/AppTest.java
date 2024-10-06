@@ -16,8 +16,23 @@ public class AppTest {
     public void shouldAnswerWithTrue() {
         assertTrue(true);
     }
+
+    @Test 
+    public void quadTree_default_Spot(){
+        
+        QuadTree tree = new QuadTree();
+        Node root = tree.getRoot();
+        assertTrue(root.rect.point.x == -50 && root.rect.point.y == -50 
+        && root.rect.width == 100 
+        && root.rect.length == 100);
+    }
+
+
+
+
+
     // @Test
     // public void shouldFail(){
-    //     assertTrue(false);
+    //     assertTrue(false);s
     // }
 }

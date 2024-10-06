@@ -7,6 +7,10 @@ public class QuadTree {
         this.root = new LeafNode(-50, -50, 100, 100); // Example dimensions; adjust as needed
     }
 
+    public Node getRoot(){
+        return this.root;
+    }
+
     public void insert(Rectangle rectangle) throws Exception {
         // Check if the root is a LeafNode and needs to be updated
         if (root instanceof LeafNode) {
