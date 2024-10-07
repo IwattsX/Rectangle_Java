@@ -2,7 +2,6 @@ package rectApp;
 
 import java.util.ArrayList;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.PrintStream;
 import java.net.URL;
 import java.nio.file.Paths;
