@@ -30,7 +30,7 @@ public class App {
         catch(FileNotFoundException e){
             System.out.println(e);
         }        
-        System.out.printf("The commands being ran are \n%s\n",commands);
+        // System.out.printf("The commands being ran are \n%s\n",commands);
 
 
         for(int i =0; i<commands.size(); i++){

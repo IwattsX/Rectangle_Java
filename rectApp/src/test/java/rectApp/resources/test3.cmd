@@ -9,4 +9,5 @@ insert -20 -20 5 5;
 insert 30 4 3 3;
 insert 30 2 4 4;
 insert 30 3 2 2;
+update 30 3 20 20;
 dump;               
