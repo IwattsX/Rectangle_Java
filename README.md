@@ -35,6 +35,27 @@ mvn package
 java -cp target/rectApp-1.0-SNAPSHOT.jar rectApp.App PATH/*.cmd
 ```
 
+Example run:
+```
+java -cp target/rectApp-1.0-SNAPSHOT.jar rectApp.App PATH/Rectangle_Java/Example.cmd
+```
+Output:
+```
+Internal Node - Rectangle at -50, -50: 100x100:
+        Leaf Node - Rectangle at -50, 0: 50x50:
+                Rectangle at -30, 10: 5x5:
+        Leaf Node - Rectangle at 0, 0: 50x50:
+                Rectangle at 20, 20: 5x5:
+                Rectangle at 30, 10: 5x5:
+        Leaf Node - Rectangle at -50, -50: 50x50:
+                Rectangle at -30, -20: 5x5:
+        Leaf Node - Rectangle at 0, -50: 50x50:
+                Rectangle at 20, -10: 5x5:
+                Rectangle at 30, -20: 5x5:
+                Rectangle at 40, -30: 5x5:
+```
+
+
 # Test
 1) Get into the directory the app is in:
 ```
