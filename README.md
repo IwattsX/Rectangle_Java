@@ -28,7 +28,7 @@ cd rectApp
 ```
 2) build the package
 ```
-mvn package
+mvn package -Dmaven.test.skip.exec=true
 ```
 3) Run the code
 ```
@@ -63,7 +63,7 @@ cd rectApp
 ```
 2) build the package
 ```
-mvn package
+mvn package -Dmaven.test.skip.exec=true
 ```
 3) test
 ```
