@@ -55,49 +55,49 @@ public class AppTest {
         }
     }
 
-    // @Test
-    // public void test_test1cmd() {
-    //     // Create a stream to hold the output
-    //     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    //     PrintStream originalOut = System.out;
-    //     try {
-    //         // Redirect System.out to the output stream
-    //         System.setOut(new PrintStream(outputStream));
+    @Test
+    public void test_test1cmd() {
+        // Create a stream to hold the output
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        try {
+            // Redirect System.out to the output stream
+            System.setOut(new PrintStream(outputStream));
 
-    //         // Load the file using getResource to find the path in the classpath
-    //         URL resource = getClass().getClassLoader().getResource("rectApp/resources/test1.cmd");
-    //         if (resource == null) {
-    //             throw new Exception("File not found in resources.");
-    //         }
+            // Load the file using getResource to find the path in the classpath
+            URL resource = getClass().getClassLoader().getResource("rectApp/resources/test1.cmd");
+            if (resource == null) {
+                throw new Exception("File not found in resources.");
+            }
 
-    //         // Convert the resource URL to a file path
-    //         Path testCmdPath = Paths.get(resource.toURI());
+            // Convert the resource URL to a file path
+            Path testCmdPath = Paths.get(resource.toURI());
 
-    //         // Call the main function with the path as an argument
-    //         rectApp.App.main(new String[]{testCmdPath.toString()});
+            // Call the main function with the path as an argument
+            rectApp.App.main(new String[]{testCmdPath.toString()});
 
-    //         // Convert the outputStream content to a string
-    //         String output = outputStream.toString();
+            // Convert the outputStream content to a string
+            String output = outputStream.toString();
 
-    //         // Temporarily print the output for debugging
-    //         System.out.println("Captured Output:\n" + output);
+            // Temporarily print the output for debugging
+            System.out.println("Captured Output:\n" + output);
 
-    //         // Verify the output, using 'contains' instead of 'matches'
-    //         assertTrue(output.matches("Rectangle at (10.00, 10.00): 5.00x5.00:\n"));
-    //         assertTrue(output.matches("Leaf Node - Rectangle at (-50.00, -50.00): 100.00x100.00:"));
-    //         assertTrue(output.matches("Rectangle at (10.00, 10.00): 5.00x5.00:"));
-    //         assertTrue(output.matches("Rectangle at (-10.00, 8.00): 5.00x5.00:\"));"));
+            // Verify the output, using 'contains' instead of 'matches'
+            assertTrue(output.contains("Rectangle at (10.00, 10.00): 5.00x5.00:\n" + //
+                                "Leaf Node - Rectangle at (-50.00, -50.00): 100.00x100.00:\n" + //
+                                "\tRectangle at (10.00, 10.00): 5.00x5.00:\n" + //
+                                "\tRectangle at (-10.00, 8.00): 5.00x5.00:"));
 
             
             
             
-    //     } catch (Exception e) {
-    //         System.out.println(e.getMessage());
-    //     } finally {
-    //         // Restore original System.out
-    //         System.setOut(originalOut);
-    //     }
-    // }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            // Restore original System.out
+            System.setOut(originalOut);
+        }
+    }
     
     
     @Test 
