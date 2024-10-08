@@ -58,7 +58,7 @@ public class LeafNode extends Node {
         boolean flag = true;
         for (int i = 0; i < rectangles.size(); i++) {
             Rectangle rectangle = rectangles.get(i);
-            if (rectangle.point.x == x && rectangle.point.y == y) {
+            if (Float.compare(rectangle.point.x, x) == 0 && Float.compare(rectangle.point.y, y) == 0) {
                 rectangles.remove(i);
                 flag = false;
                 break;
