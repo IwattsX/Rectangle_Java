@@ -3,8 +3,8 @@ package rectApp;
 /** A class containing Rectangle Fields Points(x, y) and length and width */
 public class Rectangle {
     public Point point;
-    public int length;
-    public int width;
+    public float length;
+    public float width;
     /**
      * Initializes a Rectangle object with a bottom left point and a length and width
      * @param x : point at x
@@ -12,7 +12,7 @@ public class Rectangle {
      * @param l : length
      * @param w : width
      */
-    Rectangle(int x, int y, int l, int w){
+    Rectangle(float x, float y, float l, float w){
         this.point = new Point(x, y); // Use Point's constructor
         this.length = l;
         this.width = w;
@@ -30,8 +30,8 @@ public class Rectangle {
 
 
     // Check if the bottom-left corner of 'other' is within the bounds of this rectangle
-    return (other.point.x >= this.point.x && other.point.x <= this.point.x + this.length) 
-        && (other.point.y >= this.point.y && other.point.y <= this.point.y + this.width);
+    return (Float.compare(other.point.x, this.point.x) >= 0 && Float.compare(other.point.x, this.point.x + this.length) <= 0) 
+        && (Float.compare(other.point.y, this.point.y) >= 0 && Float.compare(other.point.y,this.point.y + this.width) <= 0);
     }
 
     /**
@@ -39,7 +39,7 @@ public class Rectangle {
      */
     public String toString(){
         //Rectangle at 25, 0: 25x25:
-        return String.format("Rectangle at %d, %d: %dx%d:", this.point.x, this.point.y, this.length, this.width);
+        return String.format("Rectangle at (%.2f, %.2f): %.2fx%.2f:", this.point.x, this.point.y, this.length, this.width);
     }
 }
 

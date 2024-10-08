@@ -23,7 +23,7 @@ public class LeafNode extends Node {
      * @param l : length of the rectangle
      * @param w : width of the rectangle
      */
-    LeafNode(int x, int y, int l, int w) {
+    LeafNode(float x, float y, float l, float w) {
         this.rect = new Rectangle(x, y, l, w);
     }
 
@@ -35,7 +35,7 @@ public class LeafNode extends Node {
      * @param w : width of the rectangle
      * @param n : the parent of this LeafNode
      */
-    LeafNode(int x, int y, int l, int w, InternalNode n) {
+    LeafNode(float x, float y, float l, float w, InternalNode n) {
         this.rect = new Rectangle(x, y, l, w);
         parent = n;
     }
@@ -89,7 +89,7 @@ public class LeafNode extends Node {
      * @throws Exception : nothing to be deleted at (x,y)
      */
     @Override
-    void delete(int x, int y) throws Exception {
+    void delete(float x, float y) throws Exception {
         boolean flag = true;
         for (int i = 0; i < rectangles.size(); i++) {
             Rectangle rectangle = rectangles.get(i);
@@ -115,7 +115,7 @@ public class LeafNode extends Node {
      * @throws Exception : if there is no rectangles at (x,y)
      */
     @Override
-    void update(int x, int y, int l, int w) throws Exception {
+    void update(float x, float y, float l, float w) throws Exception {
 
         boolean flag = true;
         for (int i = 0; i < rectangles.size(); i++) {
@@ -155,7 +155,7 @@ public class LeafNode extends Node {
      * @throws Exception : if no rectangle is there at (x, y)
      */
     @Override
-    Rectangle find(int x, int y) throws Exception {
+    Rectangle find(float x, float y) throws Exception {
         for (Rectangle rectangle : rectangles) {
             if (rectangle.point.x == x && rectangle.point.y == y) {
                 return rectangle;

@@ -40,12 +40,12 @@ public class App {
                 if(cmd.startsWith("insert")){
                     String[] insertInput = parse_InsertInput(cmd);
 
-                    int x, y, l, w;
-                    x = Integer.valueOf(insertInput[1]);
-                    y = Integer.valueOf(insertInput[2]);
+                    float x, y, l, w;
+                    x = Float.parseFloat(insertInput[1]);
+                    y = Float.parseFloat(insertInput[2]);
 
-                    l = Integer.valueOf(insertInput[3]);
-                    w = Integer.valueOf(insertInput[4]);
+                    l = Float.parseFloat(insertInput[3]);
+                    w = Float.parseFloat(insertInput[4]);
 
 
                     Rectangle rectangle = new Rectangle(x, y, l, w);
@@ -55,10 +55,10 @@ public class App {
                 else if(cmd.startsWith("find")){
 
                     String[] findInput = parse_FindInput(cmd);
-                    int x, y;
+                    float x, y;
 
-                    x = Integer.valueOf(findInput[1]);
-                    y = Integer.valueOf(findInput[2]);
+                    x = Float.parseFloat(findInput[1]);
+                    y = Float.parseFloat(findInput[2]);
 
 
 
@@ -70,22 +70,22 @@ public class App {
                 else if(cmd.startsWith("delete")){
                     String[] deleteInput = parse_DeleteInput(cmd);
 
-                    int x, y;
+                    float x, y;
 
-                    x = Integer.valueOf(deleteInput[1]);
-                    y = Integer.valueOf(deleteInput[2]);
+                    x = Float.parseFloat(deleteInput[1]);
+                    y = Float.parseFloat(deleteInput[2]);
 
                     tree.delete(x,y);
                 }   
                 else if(cmd.startsWith("update")){
                     String[] updateInput = parse_UpdateInput(cmd);
                     
-                    int x, y, l, w;
+                    float x, y, l, w;
 
-                    x = Integer.valueOf(updateInput[1]);
-                    y = Integer.valueOf(updateInput[2]);
-                    l = Integer.valueOf(updateInput[3]);
-                    w = Integer.valueOf(updateInput[4]);
+                    x = Float.parseFloat(updateInput[1]);
+                    y = Float.parseFloat(updateInput[2]);
+                    l = Float.parseFloat(updateInput[3]);
+                    w = Float.parseFloat(updateInput[4]);
 
                     tree.update(x,y,l,w);
 

@@ -19,7 +19,7 @@ abstract class Node {
      * @param y : location of rectangle at y
      * @throws Exception : nothing to be deleted
      */
-    abstract void delete(int x, int y) throws Exception;
+    abstract void delete(float x, float y) throws Exception;
 
     /**
      * Updates the rectangles length and width based on (x,y)
@@ -29,7 +29,7 @@ abstract class Node {
      * @param w : update rectangle to this width
      * @throws Exception : nothing to be updated
      */
-    abstract void update(int x, int y, int l, int w) throws Exception;
+    abstract void update(float x, float y, float l, float w) throws Exception;
     
     /**
      * prints the entire quadTree
@@ -43,7 +43,7 @@ abstract class Node {
      * @return Rectangle
      * @throws Exception : if there is nothing at (x, y)
      */
-    abstract Rectangle find(int x, int y) throws Exception;
+    abstract Rectangle find(float x, float y) throws Exception;
 
 
 }

@@ -25,7 +25,7 @@ public class InternalNode extends Node {
      * @param l : length
      * @param w : width
      */
-    InternalNode(int x, int y, int l, int w){
+    InternalNode(float x, float y, float l, float w){
         this.rect = new Rectangle(x, y, l, w);
         this.topLeft = null;
         this.topRight = null;
@@ -76,7 +76,7 @@ public class InternalNode extends Node {
      * @throws Exception : if there is nothing to delete at (x,y)
      */
     @Override
-    void delete(int x, int y) throws Exception{
+    void delete(float x, float y) throws Exception{
         Rectangle checkRect = new Rectangle(x, y, 10, 10);
 
         if(topLeft != null && topLeft.rect.contains(checkRect)){
@@ -108,7 +108,7 @@ public class InternalNode extends Node {
      * @throws Exception
      */
     @Override
-    void update(int x, int y, int l, int w) throws Exception{
+    void update(float x, float y, float l, float w) throws Exception{
         Rectangle checkRect = new Rectangle(x, y, 10, 10);
         if(topLeft != null && topLeft.rect.contains(checkRect)){
             topLeft.update(x,y, l, w);
@@ -165,7 +165,7 @@ public class InternalNode extends Node {
      * @throws Exception
      */
     @Override
-    Rectangle find(int x, int y) throws Exception{
+    Rectangle find(float x, float y) throws Exception{
         Rectangle checkRect = new Rectangle(x, y, 10, 10);
 
         if(topLeft != null && topLeft.rect.contains(checkRect)){

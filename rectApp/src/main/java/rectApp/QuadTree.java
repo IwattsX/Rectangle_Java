@@ -60,7 +60,7 @@ public class QuadTree {
      * @return Rectangle : the rectangle object at (x, y)
      * @throws Exception : if there is no rectangle at (x, y)
      */
-    public Rectangle find(int x, int y) throws Exception{
+    public Rectangle find(float x, float y) throws Exception{
         return root.find(x, y);
     }
 
@@ -70,7 +70,7 @@ public class QuadTree {
      * @param y : location at Y
      * @throws Exception : nothing to be deleted at (x, y)
      */
-    public void delete(int x, int y) throws Exception {
+    public void delete(float x, float y) throws Exception {
         root.delete(x,y);
     }
 
@@ -82,7 +82,7 @@ public class QuadTree {
      * @param w : width to be updated to
      * @throws Exception
      */
-    public void update(int x, int y, int l, int w) throws Exception{
+    public void update(float x, float y, float l, float w) throws Exception{
         root.update(x,y,l,w);
     }
 
