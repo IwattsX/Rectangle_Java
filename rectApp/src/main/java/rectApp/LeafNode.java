@@ -6,14 +6,10 @@ import java.util.ArrayList;
 public class LeafNode extends Node {
     ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
 
-    InternalNode parent;
-
     // default constructor
     LeafNode() {
         // default values for leaf node
         this.rect = new Rectangle(-50, -50, 100, 100);
-        parent = null;
-
     }
 
     /**
@@ -26,23 +22,6 @@ public class LeafNode extends Node {
     LeafNode(float x, float y, float l, float w) {
         this.rect = new Rectangle(x, y, l, w);
     }
-
-    /**
-     * A parameterized constructor with a parent node
-     * @param x : location of bottom left point at X
-     * @param y : location of bottom left point at Y
-     * @param l : length of the rectangle
-     * @param w : width of the rectangle
-     * @param n : the parent of this LeafNode
-     */
-    LeafNode(float x, float y, float l, float w, InternalNode n) {
-        this.rect = new Rectangle(x, y, l, w);
-        parent = n;
-    }
-
-
-    
-
     
     /** 
      * Insert a rectangle into an ArrayList of rectangles in LeafNode or puts them for insertion inside of an InternalNode that will eventually have LeafNodes to insert into
@@ -56,21 +35,7 @@ public class LeafNode extends Node {
             throw new Exception("You can not insert at this position");
         }
         if(rectangles.size() == 5){
-            InternalNode newNode = new InternalNode(this.rect.point.x, this.rect.point.y, this.rect.length, this.rect.width);
-
-            for(Rectangle rectangle : rectangles){
-                newNode.insert(rectangle);
-            }
-            newNode.insert(r);
-            
-            // not a root leafnode, only internal nodes can store pointers to another leafnode
-            if(this.parent != null){ 
-                this.parent.replaceChild(newNode);
-            }
-            else{
-                throw new Exception("Root isn't an internal node");
-            }
-            return;
+            throw new Exception("Root isn't an internal node");
         }
         for(Rectangle rectangle : rectangles){
             if(r.point.x == rectangle.point.x && r.point.y == rectangle.point.y){

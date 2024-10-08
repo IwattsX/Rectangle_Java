@@ -42,27 +42,77 @@ public class InternalNode extends Node {
     void insert(Rectangle r) throws Exception {
         // Ensure children are initialized
         if (topLeft == null) {
-            topLeft = new LeafNode(rect.point.x, rect.point.y + (rect.width / 2), rect.length / 2, rect.width / 2, this);
+            topLeft = new LeafNode(rect.point.x, rect.point.y + (rect.width / 2), rect.length / 2, rect.width / 2);
         }
         if (topRight == null) {
-            topRight = new LeafNode(rect.point.x + (rect.length / 2), rect.point.y + (rect.width / 2), rect.length / 2, rect.width / 2, this);
+            topRight = new LeafNode(rect.point.x + (rect.length / 2), rect.point.y + (rect.width / 2), rect.length / 2, rect.width / 2);
         }
         if (bottomLeft == null) {
-            bottomLeft = new LeafNode(rect.point.x, rect.point.y, rect.length / 2, rect.width / 2, this);
+            bottomLeft = new LeafNode(rect.point.x, rect.point.y, rect.length / 2, rect.width / 2);
         }
         if (bottomRight == null) {
-            bottomRight = new LeafNode(rect.point.x + (rect.length / 2), rect.point.y, rect.length / 2, rect.width / 2, this);
+            bottomRight = new LeafNode(rect.point.x + (rect.length / 2), rect.point.y, rect.length / 2, rect.width / 2);
         }
     
         // Insert the rectangle into the appropriate child node
         if (topLeft.rect.contains(r)) {
-            topLeft.insert(r);
-        } else if (topRight.rect.contains(r)) {
-            topRight.insert(r);
-        } else if (bottomLeft.rect.contains(r)) {
-            bottomLeft.insert(r);
-        } else if (bottomRight.rect.contains(r)) {
-            bottomRight.insert(r);
+            if(topLeft instanceof LeafNode && ((LeafNode)topLeft).rectangles.size() == 5){
+                InternalNode node = new InternalNode(topLeft.rect.point.x, topLeft.rect.point.y, topLeft.rect.length, topLeft.rect.width);
+                for(Rectangle rectangle : ((LeafNode)topLeft).rectangles){
+                    node.insert(rectangle);
+                }
+                node.insert(r);
+
+                this.topLeft = node;
+            }
+            else{
+                topLeft.insert(r);
+            }
+        } 
+        
+        else if (topRight.rect.contains(r)) {
+            if(topRight instanceof LeafNode && ((LeafNode)topRight).rectangles.size() == 5){
+                InternalNode node = new InternalNode(topRight.rect.point.x, topRight.rect.point.y, topRight.rect.length, topRight.rect.width);
+                for(Rectangle rectangle : ((LeafNode)topRight).rectangles){
+                    node.insert(rectangle);
+                }
+                node.insert(r);
+
+                this.topRight = node;
+            }
+            else{
+                topRight.insert(r);
+            }
+        } 
+        
+        else if (bottomLeft.rect.contains(r)) {
+            if(bottomLeft instanceof LeafNode && ((LeafNode)bottomLeft).rectangles.size() == 5){
+                InternalNode node = new InternalNode(bottomLeft.rect.point.x, bottomLeft.rect.point.y, bottomLeft.rect.length, bottomLeft.rect.width);
+                for(Rectangle rectangle : ((LeafNode)bottomLeft).rectangles){
+                    node.insert(rectangle);
+                }
+                node.insert(r);
+
+                this.bottomLeft = node;
+            }
+            else{
+                bottomLeft.insert(r);
+            }
+        } 
+        
+        else if (bottomRight.rect.contains(r)) {
+            if(bottomRight instanceof LeafNode && ((LeafNode)bottomRight).rectangles.size() == 5){
+                InternalNode node = new InternalNode(bottomRight.rect.point.x, bottomRight.rect.point.y, bottomRight.rect.length, bottomRight.rect.width);
+                for(Rectangle rectangle : ((LeafNode)bottomRight).rectangles){
+                    node.insert(rectangle);
+                }
+                node.insert(r);
+
+                this.bottomRight = node;
+            }
+            else{
+                bottomRight.insert(r);
+            }
         } else {
             throw new Exception("Rectangle does not fit in any quadrant.");
         }
